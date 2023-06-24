@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sales Commission Calculator</title>
+</head>
+
+<body>
+    <h1>Sales Commission Calculator</h1>
+    <form action="#" method="post" id="commissionForm">
+        <label for="sales">Sales Amount:</label>
+        <input type="text" id="sales" name="sales" required><br><br>
+        <label for="commission">Commission Rate:</label>
+        <input type="text" id="commission" name="commission" required><br><br>
+        <input type="submit" value="Calculate Commission">
+    </form>
+
+    <div id="resultContainer" style="display: none;">
+        <h2>Commission Result</h2>
+        <p id="commissionResult"></p>
+    </div>
+
+    <script>
+        document.getElementById("commissionForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            calculateCommission();
+        });
+
+        function calculateCommission() {
+            var salesAmount = parseFloat(document.getElementById("sales").value);
+            var commissionRate = parseFloat(document.getElementById("commission").value);
+            var commission = salesAmount * commissionRate / 100;
+            document.getElementById("commissionResult").textContent = "Commission: $" + commission.toFixed(2);
+            document.getElementById("resultContainer").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
